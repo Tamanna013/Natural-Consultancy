@@ -1,0 +1,15 @@
+.blurry-text-section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #242424;
+}
+
+.blurry-text {
+  font-size: 4rem;
+  color: white;
+  transition: filter 0.1s ease-out;
+  max-width: 80%;
+  text-align: center;
+}

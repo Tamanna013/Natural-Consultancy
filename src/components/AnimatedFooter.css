@@ -1,0 +1,45 @@
+.animated-footer {
+  background-color: #1a1a1a;
+  padding: 4rem 0;
+  overflow: hidden;
+  position: relative;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+}
+
+.footer-content {
+  display: flex;
+  width: max-content;
+  padding: 0 2rem;
+}
+
+.footer-item {
+  margin: 0 2rem;
+  opacity: 0;
+  transform: translateX(-100px);
+  min-width: 200px;
+  text-align: center;
+}
+
+.footer-item img {
+  max-width: 100%;
+  max-height: 150px;
+  object-fit: contain;
+}
+
+.footer-item p {
+  font-size: 1.2rem;
+  color: white;
+}
+
+.animating .footer-item {
+  animation: slideIn 1s forwards;
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
