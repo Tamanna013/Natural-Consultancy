@@ -1,0 +1,130 @@
+.navigation-bar {
+  position: fixed;
+  top: 50%;
+  right: 30px;
+  transform: translateY(-50%);
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.nav-links li {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  margin-right: 10px;
+  transition: all 0.3s ease;
+}
+
+.nav-text {
+  opacity: 0;
+  transform: translateX(10px);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  color: white;
+  font-weight: 500;
+}
+
+.nav-links li:hover .nav-indicator,
+.nav-links li.active .nav-indicator {
+  background-color: #4CAF50;
+  box-shadow: 0 0 10px rgba(76, 175, 80, 0.7);
+}
+
+.nav-links li:hover .nav-text,
+.navigation-bar.expanded .nav-text {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.nav-links li.active .nav-text {
+  opacity: 1;
+  transform: translateX(0);
+  color: #4CAF50;
+}
+
+.nav-toggle {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  position: absolute;
+  top: -50px;
+  right: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-toggle-icon {
+  width: 20px;
+  height: 2px;
+  background-color: white;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav-toggle-icon::before,
+.nav-toggle-icon::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 2px;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+.nav-toggle-icon::before {
+  transform: translateY(-6px);
+}
+
+.nav-toggle-icon::after {
+  transform: translateY(6px);
+}
+
+.navigation-bar.expanded .nav-toggle-icon {
+  background-color: transparent;
+}
+
+.navigation-bar.expanded .nav-toggle-icon::before {
+  transform: rotate(45deg);
+}
+
+.navigation-bar.expanded .nav-toggle-icon::after {
+  transform: rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+  .navigation-bar {
+    right: 15px;
+  }
+  
+  .nav-links {
+    gap: 15px;
+  }
+  
+  .nav-indicator {
+    width: 10px;
+    height: 10px;
+  }
+}

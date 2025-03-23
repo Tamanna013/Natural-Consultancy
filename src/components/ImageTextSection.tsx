@@ -10,6 +10,7 @@ interface ImageTextSectionProps {
 const ImageTextSection = ({ imageSrc, text, position }: ImageTextSectionProps) => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [scrollPosition, setScrollPosition] = useState(0);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -25,10 +26,20 @@ const ImageTextSection = ({ imageSrc, text, position }: ImageTextSectionProps) =
       observer.observe(sectionRef.current);
     }
 
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+      const rect = sectionRef.current.getBoundingClientRect();
+      const scrollPercentage = 1 - (rect.top / window.innerHeight);
+      setScrollPosition(scrollPercentage);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    
     return () => {
       if (sectionRef.current) {
         observer.unobserve(sectionRef.current);
       }
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -39,10 +50,13 @@ const ImageTextSection = ({ imageSrc, text, position }: ImageTextSectionProps) =
     >
       <div 
         className="image-background"
-        style={{ backgroundImage: `url(${imageSrc})` }}
+        style={{ 
+          backgroundImage: `url(${imageSrc})`,
+          transform: `scale(${1 + scrollPosition * 0.1}) translateY(${scrollPosition * -20}px)` 
+        }}
       ></div>
       <div className={`text-overlay ${position}`}>
-        <p>{text}</p>
+        <p className="animated-text">{text}</p>
       </div>
     </div>
   );

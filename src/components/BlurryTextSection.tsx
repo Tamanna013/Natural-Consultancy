@@ -17,7 +17,7 @@ const BlurryTextSection = ({ text }: BlurryTextSectionProps) => {
       const scrollPercentage = 1 - (rect.bottom / window.innerHeight);
       
       if (scrollPercentage > 0 && scrollPercentage < 1) {
-        setBlurAmount(scrollPercentage * 10); // Max blur of 10px
+        setBlurAmount(scrollPercentage * 10);
       }
     };
 

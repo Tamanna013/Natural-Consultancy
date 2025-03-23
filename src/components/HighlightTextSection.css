@@ -1,0 +1,38 @@
+.highlight-text-section {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #121212;
+  padding: 2rem;
+}
+
+.highlight-text-container {
+  max-width: 800px;
+  font-size: 2rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.highlight-word {
+  display: inline-block;
+  transition: all 0.3s ease;
+  opacity: 0.3;
+  transform: translateY(10px);
+  filter: blur(2px);
+}
+
+.highlight-word.highlighted {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+  color: #4CAF50;
+  text-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+}
+
+@media (max-width: 768px) {
+  .highlight-text-container {
+    font-size: 1.5rem;
+  }
+}

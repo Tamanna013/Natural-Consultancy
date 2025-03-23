@@ -1,0 +1,113 @@
+.loading-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #0a0a0a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.loading-content {
+  width: 80%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.loading-image-container {
+  width: 100%;
+  height: 300px;
+  position: relative;
+  margin-bottom: 30px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.loading-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(1.1);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.loading-image.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.loading-title {
+  font-size: 3rem;
+  color: white;
+  margin-bottom: 20px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  animation: pulse 2s infinite;
+}
+
+.loading-text {
+  font-size: 1.2rem;
+  color: #a0a0a0;
+  margin-bottom: 30px;
+  height: 24px;
+  text-align: center;
+}
+
+.loading-bar-container {
+  width: 100%;
+  height: 6px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.loading-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #4CAF50, #8BC34A);
+  width: 0;
+  transition: width 0.3s ease;
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(76, 175, 80, 0.7);
+}
+
+.loading-percentage {
+  font-size: 1rem;
+  color: white;
+  font-weight: bold;
+}
+
+@keyframes pulse {
+  0% {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(76, 175, 80, 0.5);
+  }
+  100% {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+}
+
+@media (max-width: 768px) {
+  .loading-image-container {
+    height: 200px;
+  }
+  
+  .loading-title {
+    font-size: 2rem;
+  }
+}

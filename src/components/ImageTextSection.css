@@ -1,7 +1,16 @@
 .image-text-section {
   height: 100vh;
+  width: 100%;
   position: relative;
   overflow: hidden;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.image-text-section.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .image-background {
@@ -12,54 +21,65 @@
   height: 100%;
   background-size: cover;
   background-position: center;
-  opacity: 0;
-  transition: opacity 1s ease, transform 1.5s ease;
-  transform: scale(1.1);
+  transition: transform 0.5s ease-out;
+  filter: brightness(0.8) contrast(1.1);
 }
 
 .text-overlay {
   position: absolute;
   padding: 2rem;
-  background-color: rgba(0, 0, 0, 0.7);
+  max-width: 500px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: all 0.5s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.text-overlay.top-right {
+  top: 10%;
+  right: 10%;
+}
+
+.text-overlay.top-left {
+  top: 10%;
+  left: 10%;
+}
+
+.text-overlay.bottom-right {
+  bottom: 10%;
+  right: 10%;
+}
+
+.text-overlay.bottom-left {
+  bottom: 10%;
+  left: 10%;
+}
+
+.animated-text {
+  font-size: 1.5rem;
   color: white;
-  max-width: 40%;
+  margin: 0;
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 1s ease 0.5s, transform 1s ease 0.5s;
-  z-index: 2;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards 0.3s;
 }
 
-.image-text-section:hover .text-overlay {
-  opacity: 1;
-  transform: translateY(0);
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.top-right {
-  top: 10%;
-  right: 10%;
-}
-
-.top-left {
-  top: 10%;
-  left: 10%;
-}
-
-.bottom-right {
-  bottom: 10%;
-  right: 10%;
-}
-
-.bottom-left {
-  bottom: 10%;
-  left: 10%;
-}
-
-.visible .image-background {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.visible .text-overlay {
-  opacity: 1;
-  transform: translateY(0);
+@media (max-width: 768px) {
+  .text-overlay {
+    padding: 1.5rem;
+    max-width: 80%;
+  }
+  
+  .animated-text {
+    font-size: 1.2rem;
+  }
 }

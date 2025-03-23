@@ -16,7 +16,7 @@ const FlippingSection = ({ index, text }: FlippingSectionProps) => {
         if (entry.isIntersecting) {
           setTimeout(() => {
             setIsFlipped(true);
-          }, index * 100); // Stagger the animations
+          }, index * 100);
         }
       },
       { threshold: 0.5 }

@@ -1,10 +1,34 @@
+import { useState, useEffect } from 'react';
 import Hero from './components/Hero';
 import BlurryTextSection from './components/BlurryTextSection';
 import ImageTextSection from './components/ImageTextSection';
 import AnimatedFooter from './components/AnimatedFooter';
+import LoadingPage from './components/LoadingPage';
+import RunningTextSection from './components/RunningTextSection';
+import HighlightTextSection from './components/HighlightTextSection';
+import NavigationBar from './components/NavigationBar';
 import './App.css';
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Preload images
+    const preloadImages = () => {
+      const imageUrls = [
+        ...heroImages,
+        ...imageTextSections.map(section => section.imageSrc)
+      ];
+      
+      imageUrls.forEach(url => {
+        const img = new Image();
+        img.src = url;
+      });
+    };
+    
+    preloadImages();
+  }, []);
+
   const heroImages = [
     "/p1.jpg?height=800&width=1200",
     "/p2.jpg?height=800&width=1200",
@@ -39,6 +63,16 @@ function App() {
     }
   ];
 
+  const runningTexts = [
+    "SUSTAINABILITY",
+    "INNOVATION",
+    "NATURE",
+    "CONSERVATION",
+    "ECO-FRIENDLY"
+  ];
+
+  const highlightText = "We believe in a world where technology and nature coexist harmoniously. Our mission is to develop innovative solutions that protect our planet's resources while enabling sustainable growth. Through careful research, thoughtful design, and collaborative partnerships, we're creating a future where both humanity and nature can thrive together.";
+
   const footerItems = [
     { type: 'text' as const, content: "© 2023 Natural Consultancy" },
     { type: 'image' as const, content: "/natural.png?height=100&width=100", alt: "Green Innovations Logo" },
@@ -49,27 +83,60 @@ function App() {
     { type: 'text' as const, content: "Terms of Service" }
   ];
 
+  const navigationSections = [
+    { id: 'hero', name: 'Home' },
+    { id: 'blurry-text', name: 'About' },
+    { id: 'image-text-1', name: 'Discover' },
+    { id: 'image-text-2', name: 'Mission' },
+    { id: 'running-text', name: 'Values' },
+    { id: 'highlight-text', name: 'Vision' },
+    { id: 'footer', name: 'Contact' }
+  ];
+
   return (
-    <div className="app-container">
-      <Hero 
-        videoSrc="/bg.mp4" 
-        images={heroImages}
-        title="Natural Consultancy"
-      />
-      
-      <BlurryTextSection text="Nature is our greatest treasure. Let's protect it." />
-      
-      {imageTextSections.map((section, index) => (
-        <ImageTextSection 
-          key={index}
-          imageSrc={section.imageSrc}
-          text={section.text}
-          position={section.position}
-        />
-      ))}
-      
-      <AnimatedFooter items={footerItems} />
-    </div>
+    <>
+      {isLoading ? (
+        <LoadingPage onLoadComplete={() => setIsLoading(false)} />
+      ) : (
+        <div className="app-container">
+          <NavigationBar sections={navigationSections} />
+          
+          <section id="hero">
+            <Hero 
+              videoSrc="/bg.mp4" 
+              images={heroImages}
+              title="Natural Consultancy"
+            />
+          </section>
+          
+          <section id="blurry-text">
+            <BlurryTextSection text="Nature is our greatest treasure. Let's protect it." />
+          </section>
+          
+          {imageTextSections.map((section, index) => (
+            <section id={`image-text-${index + 1}`} key={index}>
+              <ImageTextSection 
+                imageSrc={section.imageSrc}
+                text={section.text}
+                position={section.position}
+              />
+            </section>
+          ))}
+          
+          <section id="running-text">
+            <RunningTextSection texts={runningTexts} />
+          </section>
+          
+          <section id="highlight-text">
+            <HighlightTextSection text={highlightText} />
+          </section>
+          
+          <section id="footer">
+            <AnimatedFooter items={footerItems} />
+          </section>
+        </div>
+      )}
+    </>
   );
 }
 
