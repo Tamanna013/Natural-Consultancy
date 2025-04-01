@@ -5,6 +5,10 @@
   transform: translateY(-50%);
   z-index: 100;
   transition: all 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  padding: 15px 10px;
+  border-radius: 30px;
 }
 
 .nav-links {
@@ -128,3 +132,4 @@
     height: 10px;
   }
 }
+

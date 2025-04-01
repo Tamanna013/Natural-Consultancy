@@ -36,3 +36,39 @@
     font-size: 1.5rem;
   }
 }
+
+.highlight-text-section {
+  background-color: black;
+  padding: 50px;
+  text-align: center;
+}
+
+.highlight-text-section {
+  background-color: rgb(0, 0, 0);
+  padding: 50px;
+  text-align: center;
+  z-index: 10;
+  position: relative;
+}
+
+.highlight-text-container {
+  display: inline-block;
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+  z-index: 11;
+  position: relative;
+  border: 2px solid black;
+  padding: 5px;
+}
+
+.highlight-word {
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  margin-right: 10px;
+}
+
+.highlighted {
+  color: limegreen;
+  transform: translateY(-5px);
+}

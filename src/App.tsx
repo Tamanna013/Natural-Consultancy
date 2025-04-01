@@ -13,7 +13,6 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Preload images
     const preloadImages = () => {
       const imageUrls = [
         ...heroImages,

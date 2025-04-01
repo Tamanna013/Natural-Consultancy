@@ -49,3 +49,65 @@
     -webkit-text-stroke: 1px rgba(255, 255, 255, 0.7);
   }
 }
+.running-text-section {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+  overflow: hidden;
+}
+
+.running-text-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.running-text-line {
+  font-size: 3rem;
+  font-weight: bold;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.running-text-word {
+  display: inline-block;
+  transition: color 0.3s ease, transform 0.3s ease;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.running-text-word.highlighted {
+  color: #4CAF50;
+  transform: scale(1.1);
+}
+
+.running-text-line span {
+  display: inline-block;
+  font-size: 8vw;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.7);
+  padding-right: 50px;
+  animation: textScroll linear infinite;
+}
+
+@keyframes textScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@media (max-width: 768px) {
+  .running-text-line span {
+    font-size: 12vw;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.7);
+  }
+}
