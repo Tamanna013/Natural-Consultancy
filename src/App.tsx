@@ -73,12 +73,12 @@ function App() {
   const highlightText = "We believe in a world where technology and nature coexist harmoniously. Our mission is to develop innovative solutions that protect our planet's resources while enabling sustainable growth. Through careful research, thoughtful design, and collaborative partnerships, we're creating a future where both humanity and nature can thrive together.";
 
   const footerItems = [
-    { type: 'text' as const, content: "© 2023 Natural Consultancy" },
+    { type: 'text' as const, content: "© 2025 Natural Consultancy" },
     { type: 'image' as const, content: "/natural.png?height=100&width=100", alt: "Green Innovations Logo" },
     { type: 'text' as const, content: "Contact Us" },
-    { type: 'image' as const, content: "/placeholder.svg?height=100&width=100", alt: "Social Media" },
+    { type: 'image' as const, content: "/p13.jpg?height=100&width=100", alt: "Social Media" },
     { type: 'text' as const, content: "Privacy Policy" },
-    { type: 'image' as const, content: "/placeholder.svg?height=100&width=100", alt: "Awards" },
+    { type: 'image' as const, content: "/p14.jpg?height=100&width=100", alt: "Awards" },
     { type: 'text' as const, content: "Terms of Service" }
   ];
 
@@ -109,7 +109,7 @@ function App() {
           </section>
           
           <section id="blurry-text">
-            <BlurryTextSection text="Nature is our greatest treasure. Let's protect it." />
+            <BlurryTextSection text="Join the team to make our Earth a better place again!" />
           </section>
           
           {imageTextSections.map((section, index) => (

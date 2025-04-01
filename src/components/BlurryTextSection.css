@@ -8,8 +8,9 @@
 
 .blurry-text {
   font-size: 4rem;
-  color: white;
+  color: rgb(255, 255, 255);
   transition: filter 0.1s ease-out;
   max-width: 80%;
   text-align: center;
+  -webkit-text-stroke: 2px rgb(0, 0, 0);
 }
