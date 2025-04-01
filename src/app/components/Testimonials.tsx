@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { ReactSketchCanvas, ReactSketchCanvasRef } from "react-sketch-canvas";
+import { ReactSketchCanvas, ReactSketchCanvasRef, CanvasPath } from "react-sketch-canvas";
 
 const Testimonials = () => {
   const [testimonial, setTestimonial] = useState({
@@ -18,7 +18,8 @@ const Testimonials = () => {
     setTestimonial((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleDrawingChange = (drawingData: string) => {
+  const handleDrawingChange = (updatedPaths: CanvasPath[]) => {
+    const drawingData = JSON.stringify(updatedPaths);
     setTestimonial((prev) => ({ ...prev, drawing: drawingData }));
   };
 
@@ -42,7 +43,7 @@ const Testimonials = () => {
     setTestimonial({ name: "", text: "", drawing: "" });
 
     if (canvasRef.current) {
-      canvasRef.current.clear();
+      canvasRef.current.resetCanvas();
     }
   };
 
@@ -91,10 +92,8 @@ const Testimonials = () => {
                 ref={canvasRef}
                 width="100%"
                 height="400px"
-                tool="pencil"
-                lineColor="white"
-                backgroundColor="transparent"
-                lineWidth={3}
+                strokeColor="white"
+                strokeWidth={3}
                 onChange={handleDrawingChange}
               />
             </div>
